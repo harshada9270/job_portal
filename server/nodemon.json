@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "../client/**",
+    "client/**",
+    "client/dist/**",
+    "dist/**",
+    "node_modules/**",
+    ".git/**"
+  ],
+  "ext": "js,json",
+  "delay": "2500"
+}
