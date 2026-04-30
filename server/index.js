@@ -11,13 +11,23 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 app.use(express.json());
+
+const allowedOrigins = [
+  'https://job-portal-lilac-nu-94.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: "https://job-portal-lilac-nu-94.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
 
-app.options("*", cors());
+app.options('*', cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
