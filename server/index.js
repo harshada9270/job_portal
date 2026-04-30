@@ -28,7 +28,10 @@ app.use('/api/user', userRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const PORT = process.env.PORT || 5000;
-const MONGO = process.env.MONGO_URI || 'mongodb://localhost:27017/jobportal';
+const MONGO = process.env.MONGO_URI;
+if (!MONGO) {
+  console.error("MONGO_URI is missing!");
+}
 
 app.listen(PORT, () => console.log('Server running on port', PORT));
 
