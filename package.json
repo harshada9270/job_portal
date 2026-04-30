@@ -1,0 +1,11 @@
+{
+  "name": "job-portal",
+  "private": true,
+  "workspaces": [
+    "server"
+  ],
+  "scripts": {
+    "start": "npm --prefix server start",
+    "build": "npm --prefix server install"
+  }
+}
