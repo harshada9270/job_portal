@@ -12,9 +12,12 @@ const userRoutes = require('./routes/user');
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: "https://job-portal-lilac-nu-94.vercel.app/",
+  origin: "https://job-portal-lilac-nu-94.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+app.options("*", cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
