@@ -27,10 +27,19 @@ app.use('/api/user', userRoutes);
 // Serve uploaded resumes
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
+if (!PORT) {
+  console.error("PORT is missing!");
+}
+
+app.listen(PORT, () => {
+  console.log("Server running on", PORT);
+});
+
 const MONGO = process.env.MONGO_URI;
 if (!MONGO) {
   console.error("MONGO_URI is missing!");
+
 }
 
 app.listen(PORT, () => console.log('Server running on port', PORT));
