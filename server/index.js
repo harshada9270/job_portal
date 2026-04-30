@@ -34,16 +34,21 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', appRoutes);
 app.use('/api/user', userRoutes);
 
+app.get('/health', (req, res) => {
+  res.json({ ok: true });
+});
+
 // Serve uploaded resumes
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const PORT = process.env.PORT || 5000;
 const MONGO = process.env.MONGO_URI || 'mongodb://localhost:27017/jobportal';
 
+app.listen(PORT, () => console.log('Server running on port', PORT));
+
 mongoose.connect(MONGO)
   .then(() => {
     console.log('Connected to MongoDB');
-    app.listen(PORT, () => console.log('Server running on port', PORT));
   })
   .catch(err => {
     console.error('DB connection error', err);
