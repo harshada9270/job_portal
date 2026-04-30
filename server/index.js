@@ -15,14 +15,14 @@ app.use(express.json());
 app.use(cors());
 app.options('*', cors());
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: "OK" });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', appRoutes);
 app.use('/api/user', userRoutes);
-
-app.get('/health', (req, res) => {
-  res.json({ ok: true });
-});
 
 // Serve uploaded resumes
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -47,4 +47,9 @@ process.on('uncaughtException', (err) => {
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
+});
+
+app.use((err, req, res, next) => {
+  console.error("GLOBAL ERROR:", err);
+  res.status(500).json({ error: err.message });
 });
