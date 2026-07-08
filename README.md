@@ -4,7 +4,7 @@ A fully-featured, responsive job portal built with the **MERN (MongoDB, Express,
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 The project is split into two primary directories: **`client`** (React frontend) and **`server`** (Express/Node.js backend).
 
@@ -52,7 +52,7 @@ job-portal/
 
 ---
 
-## 🗄️ Database Design & Relationships
+## Database Design & Relationships
 
 The database is built on **MongoDB** (using **Mongoose**). Instead of complex tables and joins, it uses flexible document schemas that reference each other.
 
