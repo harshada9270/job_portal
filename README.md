@@ -52,16 +52,21 @@ job-portal/
 
 ---
 
-## 🗄️ Database Architecture & Usage
+## 🗄️ Database Design & Relationships
 
-This project uses **MongoDB** via **Mongoose ORM** to model and persist application state.
+The database is built on **MongoDB** (using **Mongoose**). Instead of complex tables and joins, it uses flexible document schemas that reference each other.
 
-### Entity Relationship Diagram (Conceptual)
+Here is a quick overview of how the core models connect:
+
 ```mermaid
-erDiagram
-    USER ||--o{ APPLICATION : submits
-    USER }o--o{ JOB : saves
-    JOB ||--o{ APPLICATION : receives
+flowchart TD
+    User["👤 User (Candidate / Admin)"]
+    Job["💼 Job Postings"]
+    Application["📄 Applications"]
+
+    User -- "Bookmarks / Saves" --> Job
+    User -- "Submits" --> Application
+    Job -- "Receives" --> Application
 ```
 
 ### Models & Schema Definitions
