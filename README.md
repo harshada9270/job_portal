@@ -103,7 +103,7 @@ Serves as the junction model tracking candidate applications to specific job lis
 
 ---
 
-## ⚙️ Core Logic: How the Database Works
+## Core Logic: How the Database Works
 
 ### 1. Stateless Authentication Pipeline
 - When a user registers or logs in, the backend hashes the password using `bcryptjs` and signs a JSON Web Token (JWT) with the user ID payload.
@@ -133,7 +133,7 @@ If a candidate updates their skills list on their Profile, the backend (`server/
 
 ---
 
-## 🚀 Setup & Installation
+## Setup & Installation
 
 ### Backend Setup
 
@@ -178,7 +178,7 @@ If a candidate updates their skills list on their Profile, the backend (`server/
 
 ---
 
-## 🔑 Default Credentials
+## Default Credentials
 
 Seeding the database creates the following credentials automatically:
 
